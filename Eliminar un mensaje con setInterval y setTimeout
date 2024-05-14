@@ -1,0 +1,24 @@
+Eliminar un mensaje con setInterval y setTimeout
+//La función setInterval ejecuta el código cada fracción de tiempo definida, o sea, en este ejemplo cada 3,5 segundos ejecutará la función 
+//La función setTimeout  ejecuta la función después del tiempo establecido, pero no la repite más.
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        eventListeners();
+        if(window.innerWidth <= 768){
+            temporaryClass(document.querySelector('.navegacion'), 'visibilidadTemporal', 500);
+        }
+     
+        //Eliminar texto de confirmación de CRUD en admin/index.php
+        borraMensaje();
+    });
+     
+    function borraMensaje() {
+        const mensajeConfirm = document.querySelector('.alerta');
+        if(mensajeConfirm !== null){
+            setTimeout(function() {
+                const padre = mensajeConfirm.parentElement;
+                padre.removeChild(mensajeConfirm);
+            }, 3500);
+    	  }
+    }        
