@@ -1,3 +1,4 @@
+// Cuando se trabaja con múltiples elementos seleccionados mediante querySelectorAll, no se peude adjuntar un EventListener directamente a la NodeList devuelta. En cambio, hay que iterar sobre la NodeList y adjuntar el EventListener a cada elemento individualmente, como se hace con forEach.
 
 function eventListeners() {
     const mobileMenu = document.querySelector('.mobile-menu');
@@ -6,6 +7,6 @@ function eventListeners() {
     // Muestra campos condicionales
     const metodoContacto = document.querySelectorAll('input[name="contacto[contacto]"]');
     metodoContacto.forEach(input => addEventListener('click', mostrarMetodosContacto));
-    
-    //metodoContacto.addEventListener('click', mostrarMetodosContacto); no válido con querySelectorAll y hay más de un elemento
 }
+
+    //metodoContacto.addEventListener('click', mostrarMetodosContacto); no es válido con querySelectorAll ya que hay más de un elemento.  La solución es iterar sobre la NodeList y adjuntar el EventListener a cada elemento individualmente, como se ha hecho en el código anterior
