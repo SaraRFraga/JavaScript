@@ -1,4 +1,4 @@
-// Cuando se trabaja con múltiples elementos seleccionados mediante querySelectorAll, no se peude adjuntar un EventListener directamente a la NodeList devuelta. En cambio, hay que iterar sobre la NodeList y adjuntar el EventListener a cada elemento individualmente, como se hace con forEach.
+// Cuando se trabaja con múltiples elementos seleccionados mediante querySelectorAll, no se puede adjuntar un EventListener directamente a la NodeList devuelta. En cambio, hay que iterar sobre la NodeList y adjuntar el EventListener a cada elemento individualmente, como se hace con forEach.
 
 function eventListeners() {
     const mobileMenu = document.querySelector('.mobile-menu');
