@@ -1,0 +1,15 @@
+/* Creamos la variable de PHP en el layout:
+
+    <?php
+        echo $script ?? '';   
+    ?>
+    //si no hay ninguna variable de script imprime un string vacío, pues no todas lás páginas llevan el script
+
+/* Creamos el scritp en la página/s que nos interesan
+
+    <?php 
+        $script = "
+            <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
+            <script src='build/js/app.js'></script>
+        ";
+    ?>
