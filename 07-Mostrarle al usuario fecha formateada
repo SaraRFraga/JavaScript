@@ -1,0 +1,8 @@
+  // Mostrándole al usuario en el resumen de la cita la fecha en formato amigable
+
+    const fechaObj = new Date(fecha);
+    const mes = fechaObj.getMonth();
+    const dia = fechaObj.getDate();
+    const year = fechaObj.getFullYear();
+
+    const fechaUTC = new Date( Date.UTC(year, mes, dia));
