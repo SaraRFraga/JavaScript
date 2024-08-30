@@ -1,0 +1,7 @@
+function reservarCita() {
+
+  const datos = new FormData();     //Aquí se crea un nuevo objeto FormData. El FormData es una interfaz de API que permite crear y manipular formularios en forma de objeto. Esto simula la acción de agregar un input de tipo texto a un formulario
+  datos.append('fecha', 'Sara');     //con datos.append podemos agregar datos al FromData
+
+  console.log([...datos]);     //con esto inspecionamos lo que hay dentro del FromData y formatea su contenido. Los corchetes [...] utilizan el operador de desestructuración para convertir el objeto FormData en un array, lo cual es más fácil de inspeccionar en la consola
+}
