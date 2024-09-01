@@ -1,0 +1,11 @@
+El uso de FormData es común para enviar datos de un formulario programáticamente o para trabajar con APIs que requieren datos en formato de formulario. Por ejemplo, si fuera necesario enviar este formulario por AJAX o fetch, podrías hacerlo así:
+
+fetch('/api/reserva', {
+  method: 'POST',
+  body: datos,
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+En resumen, esta función demuestra cómo crear y manipular objetos FormData, lo cual es muy útil para trabajar con formularios y enviar datos de manera programática en JavaScript.
