@@ -1,0 +1,43 @@
+//Parte del cliente (JavaScript) en app.js
+
+async function reservarCita() {
+    
+    const { nombre, fecha, hora, servicios, id } = cita; //aquí se desestructura el objeto cita, extrayendo sus propiedades.
+
+    const idServicios = servicios.map( servicio => servicio.id );
+
+        // se crea un nuevo array con los IDs de los servicios seleccionados
+    const datos = new FormData(); // se crea un objeto FormData y agrega campos para enviar por POST.
+      datos.append('fecha', fecha); //la parte de la izquieda es la forma en la que se accede al $_POST
+      datos.append('hora', hora); // a la derecha está la variable
+      datos.append('usuarioId', id);
+      datos.append('servicios', idServicios);
+
+    console.log(idServicios); //antes de enviar la petición comprobamos el código
+
+    return; //para que no envíe la petición aún
+
+    const url = 'http://localhost:3000/api/citas'
+    const respuesta = await fetch(url, {
+      method: 'POST',
+      body: datos
+    }
+}
+
+
+// Parte del servidor (PHP) en APIController.php
+
+public static function guardar() {
+  $respuesta = [
+      'datos' => $_POST
+  ];
+
+  echo json_encode($respuesta);   
+} // Esta función PHP recibe los datos del formulario por POST y los envía como respuesta JSON.
+
+Explicación general
+
+El cliente crea una solicitud POST con datos sobre la cita, incluyendo fecha, hora, ID del usuario y IDs de servicios seleccionados.
+La API recibe esta solicitud y simplemente repita los datos recibidos en la respuesta.
+En el navegador, se podría mostrar la respuesta para verificar que los datos llegaron correctamente a la API.
+Este patrón es común en aplicaciones web modernas donde el frontend y backend están separados. El servidor actúa como un proxy o passthrough, simplemente repitiendo lo que recibe, sin procesar los datos. Esto puede ser útil para pruebas de integración o cuando necesitas que el frontend maneje la lógica de negocio.
