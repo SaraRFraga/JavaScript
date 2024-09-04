@@ -1,0 +1,54 @@
+Fetch API es una forma moderna y más sencilla de hacer peticiones HTTP comparada con XMLHttpRequest.
+
+Si en Postman estás enviando datos en formato JSON, puedes hacerlo de esta manera:
+
+const url = 'https://example.com/api';
+const headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer YOUR_TOKEN_HERE' // si necesitas autenticación
+};
+ 
+const body = {
+  key1: 'value1',
+  key2: 'value2'
+};
+ 
+fetch(url, {
+  method: 'POST',
+  headers: headers,
+  body: JSON.stringify(body)
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+
+Para enviar datos con el formato x-www-form-urlencoded, debes codificar el cuerpo de la petición de manera especial. Puedes usar URLSearchParams para esto.
+
+
+
+const url = 'https://example.com/api';
+const headers = {
+  'Content-Type': 'application/x-www-form-urlencoded',
+  'Authorization': 'Bearer YOUR_TOKEN_HERE' // si necesitas autenticación
+};
+
+
+Otra forma muy popular es utilizar la librería Axios, que simplifica las peticiones HTTP y funciona de manera muy similar a Postman.
+
+const axios = require('axios');
+ 
+const url = 'https://example.com/api';
+const headers = {
+  'Content-Type': 'application/json',
+  'Authorization': 'Bearer YOUR_TOKEN_HERE' // si necesitas autenticación
+};
+ 
+const body = {
+  key1: 'value1',
+  key2: 'value2'
+};
+ 
+axios.post(url, body, { headers: headers })
+  .then(response => console.log(response.data))
+  .catch(error => console.error('Error:', error));
