@@ -4,7 +4,7 @@ async function reservarCita() {
     
     const { nombre, fecha, hora, servicios, id } = cita; //aquí se desestructura el objeto cita, extrayendo sus propiedades.
 
-    const idServicios = servicios.map( servicio => servicio.id );
+    const idServicios = servicios.map( servicio => servicio.id ); //diferencia entre .map y .foreach en otro commit
 
         // se crea un nuevo array con los IDs de los servicios seleccionados
     const datos = new FormData(); // se crea un objeto FormData y agrega campos para enviar por POST.
