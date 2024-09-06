@@ -1,0 +1,31 @@
+// Diferencias clave
+Retorno de valor: .map() retorna un nuevo array, mientras que .forEach() no retorna nada.
+Uso en combinaciones: .map() se usa comúnmente con métodos como .filter(), .reduce(), etc., para crear nuevas estructuras de datos. .forEach() es más apropiado para operaciones secundarias o efectos colaterales.
+Modificación del original: .map() crea una copia del array original, mientras que .forEach() puede modificarlo si se desea.
+Flexibilidad en el retorno: .map() permite retornar valores diferentes para cada elemento, mientras que .forEach() solo ejecuta una función por elemento sin retornos.
+
+
+.map() es un método que crea un nuevo array con los resultados de la función proporcionada aplicada a cada elemento del array original.
+      const servicios = [
+        { id: 1, nombre: "Servicio A" },
+        { id: 2, nombre: "Servicio B" },
+        { id: 3, nombre: "Servicio C" }
+      ];
+      
+      const idServicios = servicios.map(servicio => servicio.id);
+      console.log(idServicios); // [1, 2, 3]
+
+.forEach() es un método que ejecuta una función proporcionada una vez por cada elemento del array.
+      const servicios = [
+        { id: 1, nombre: "Servicio A" },
+        { id: 2, nombre: "Servicio B" },
+        { id: 3, nombre: "Servicio C" }
+      ];
+      
+      servicios.forEach(servicio => console.log(servicio.nombre));
+      // Imprime: Servicio A, Servicio B, Servicio C
+
+
+En el caso específico de mi código, .map() es más adecuado porque crea un nuevo array con los IDs, lo cual es útil para enviar como datos en la petición POST.
+
+servicios.forEach(servicio => console.log(servicio.nombre));
