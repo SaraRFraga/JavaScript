@@ -1,0 +1,35 @@
+// crea un nuevo registro
+public function crear() {
+
+        // Sanitizar los datos
+        $atributos = $this->sanitizarAtributos();
+
+        // Insertar en la base de datos
+        $query = " INSERT INTO " . static::$tabla . " ( ";
+        $query .= join(', ', array_keys($atributos));
+        $query .= " ) VALUES (' "; 
+        $query .= join("', '", array_values($atributos));
+        $query .= " ') ";
+
+        return json_encode(['query' => $query]);  //Eso va a imprimir la consulta que se está llamando para ver la respuesta
+
+        // Resultado de la consulta
+        $resultado = self::$db->query($query);
+        return [
+           'resultado' =>  $resultado,
+           'id' => self::$db->insert_id
+        ];
+    }
+
+// json_encode() es una función PHP que convierte un valor PHP en una representación JSON (JavaScript Object Notation). En este caso, está siendo usado para convertir un array asociativo en una cadena JSON
+
+Se está pasando un array asociativo a json_encode(). Este array tiene una única entrada donde onde $query contiene la consulta SQL que se está preparando para insertar un nuevo registro en la base de datos
+
+Función de retorno: La palabra clave return indica que esta es la salida final de la función crear() 
+
+Propósito: El objetivo de esta línea es devolver la consulta SQL completa como una cadena JSON. Esto permite que el llamador de esta función pueda ver exactamente qué consulta SQL está siendo ejecutada antes de que se realice.
+
+Es importante notar que esta práctica puede exponer información sensible sobre la estructura de la base de datos. En producción, se suele evitar devolver consultas SQL completas por razones de seguridad. En lugar de devolver la consulta completa, algunas mejores prácticas incluyen:
+    . Usar prepared statements para evitar inyecciones SQL.
+    . Devolver solo el resultado de la operación (como se hace en la segunda parte del método).
+    . Utilizar logging interno en el servidor para registrar consultas importantes.
